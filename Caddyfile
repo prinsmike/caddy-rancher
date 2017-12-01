@@ -1,0 +1,5 @@
+${CADDY_VHOST} {
+	tls {$CADDY_EMAIL}
+
+	proxy / rancher:8080
+}
