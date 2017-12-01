@@ -9,7 +9,7 @@ volumes:
     driver: local
 
 networks:
-  rancher
+  rancher:
 
 services:
 
@@ -37,5 +37,8 @@ services:
       - CADDY_EMAIL=${EMAIL}
     networks:
       - rancher
+    ports:
+      - "80:80"
+      - "443:443"
     logging:
-      - driver: journald
+      driver: journald
