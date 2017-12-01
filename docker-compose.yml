@@ -1,0 +1,41 @@
+version: "2"
+
+volumes:
+  mysql-data:
+    driver: local
+  dot-caddy:
+    driver: local
+  backups:
+    driver: local
+
+networks:
+  rancher
+
+services:
+
+  rancher:
+    image: rancher/server
+    container_name: rancher
+    restart: always
+    volumes:
+      - "mysql-data:/var/lib/mysql"
+      - "backups:/backups"
+    networks:
+      - rancher
+    logging:
+      driver: journald
+
+  caddy:
+    image: abiosoft/caddy
+    container_name: caddy
+    restart: always
+    volumes:
+      - "dot-caddy:/root/.caddy"
+      - "./Caddyfile:/etc/Caddyfile"
+    environment:
+      - CADDY_VHOST=${VHOST}
+      - CADDY_EMAIL=${EMAIL}
+    networks:
+      - rancher
+    logging:
+      - driver: journald
