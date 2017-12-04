@@ -32,6 +32,7 @@ services:
     volumes:
       - "dot-caddy:/root/.caddy"
       - "./Caddyfile:/etc/Caddyfile"
+      - "backups:/backups"
     environment:
       - CADDY_VHOST=${VHOST}
       - CADDY_EMAIL=${EMAIL}
