@@ -3,6 +3,7 @@
 
 	proxy / rancher:8080 {
 		transparent
+		websocket
 	}
 
 	log stdout
