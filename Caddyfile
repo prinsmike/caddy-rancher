@@ -4,4 +4,7 @@
 	proxy / rancher:8080 {
 		transparent
 	}
+
+	log stdout
+	errors stdout
 }
