@@ -22,8 +22,6 @@ services:
       - "backups:/backups"
     networks:
       - rancher
-    ports:
-      - "11080:8080"
     logging:
       driver: journald
 
