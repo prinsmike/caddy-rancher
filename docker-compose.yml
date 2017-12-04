@@ -20,8 +20,15 @@ services:
     volumes:
       - "mysql-data:/var/lib/mysql"
       - "backups:/backups"
+    environment:
+      - http_proxy="http://${VHOST}:80"
+      - https_proxy="https://${VHOST}:443"
+      - no_proxy="localhost,127.0.0.1"
+      - NO_PROXY="localhost,127.0.0.1"
     networks:
       - rancher
+    ports:
+      - "11080:8080"
     logging:
       driver: journald
 
